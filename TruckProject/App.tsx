@@ -2,14 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Component } from 'react'
 
-// async function getData() {
-//   // If you're using the fake development server, use that URL HERE!
-//   let response = await fetch("http://192.168.1.33").then(response => response.json())
-//   heartRate = response['bpm']
-//   // console.log(heartRate)
-// }
-
-// setInterval(getData, 1000);
 class App extends Component {
   constructor(props) {
     super(props)

@@ -2,7 +2,7 @@
 
 Important Notes
 1. Before running, point the app towards the correct, live server
-2. In App.ts, edit the URL so that it's pointing at the correct live server
+2. In `App.tsx`, edit the URL so that it's pointing at the correct live server
 3. If the real one is unavailable, use the fake one in `fake-pulse-api` instructions there on how to do that.
 
 To Run:

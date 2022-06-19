@@ -1,16 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Component } from 'react'
+
 //import Sound from 'react-native-sound';
 import CalibrateScreen from './screens/CalibrateScreen';
 import HomeScreen from './screens/HomeScreen';
 import PanicScreen from './screens/PanicScreen';
 import BottomScreen from './screens/BottomScren';
 
+import { Audio } from 'expo-av';
+
+
 var globalTime = 10;
 var startTime = 0;
 
 class App extends Component {
+  // const[sound, setSound] = AllReact.useState();
   constructor(props) {
     super(props)
     this.state = {
@@ -20,8 +25,7 @@ class App extends Component {
       totalHeartBeat: 0,
       avgHeartBeat: 0,
       occurrencesUnderThreshold: 0,
-      panic: false,
-      panicSound: null
+      panic: false
     }
   }
   render() {
@@ -46,6 +50,17 @@ class App extends Component {
       )
     }
   }
+  playSound = async () => {
+    console.log('Loading Sound');
+    const { sound } = await Audio.Sound.createAsync(
+      require('./alarm.mp3')
+    );
+    // setSound(sound);
+
+    console.log('Playing Sound');
+    await sound.playAsync();
+  }
+
   getHeartRate = async () => {
     // If you're using the fake development server, use that URL HERE!
     this.setState((prevState, props) => ({
@@ -71,7 +86,8 @@ class App extends Component {
       console.log("under threshold: ", this.state.occurrencesUnderThreshold)
     }
 
-    if (this.state.occurrencesUnderThreshold > 10) {
+    if (this.state.occurrencesUnderThreshold > 5 && !this.state.panic) {
+      this.playSound()
       this.setState({ panic: true })
     }
   }

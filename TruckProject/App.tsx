@@ -11,7 +11,7 @@ import BottomScreen from './screens/BottomScren';
 import { Audio } from 'expo-av';
 
 
-var globalTime = 10;
+var globalTime = 5;
 var startTime = 0;
 
 class App extends Component {

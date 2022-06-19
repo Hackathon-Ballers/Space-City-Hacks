@@ -5,7 +5,7 @@ import { Component } from 'react'
 export default function HomeScreen(){
     return (
         <View style={styles.container}>
-          <Text>You are okay :)</Text>
+          <Text style={{fontSize:50, color:'white'}}>You are okay :)</Text>
           <StatusBar style="auto" />
         </View>
     );
@@ -14,7 +14,7 @@ export default function HomeScreen(){
 const styles = StyleSheet.create({
     container: {
       flex: 10,
-      backgroundColor: '#fff',
+      backgroundColor: 'green',
       alignItems: 'center',
       justifyContent: 'center',
     },

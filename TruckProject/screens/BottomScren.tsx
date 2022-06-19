@@ -5,9 +5,8 @@ import { Component } from 'react'
 export default function BottomScreen(props){
     return (
         <>
-        <View style={{flex: 1, backgroundColor:'red'}}></View>
         <View style={styles.container}>
-          <Text>Heart Rate: {props.count}</Text>
+          <Text style={{fontSize:50}}>Heart Rate: {props.count}</Text>
         </View>
         </>
     );

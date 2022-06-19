@@ -5,6 +5,7 @@ import { Component } from 'react'
 import CalibrateScreen from './screens/CalibrateScreen';
 import HomeScreen from './screens/HomeScreen';
 import PanicScreen from './screens/PanicScreen';
+import BottomScreen from './screens/BottomScren';
 
 var globalTime = 10;
 var startTime = 0;
@@ -26,16 +27,22 @@ class App extends Component {
   render() {
     if (this.state.calibrating === false && !this.state.panic) {
       return (
-        <HomeScreen count={this.state.heartRate}></HomeScreen>
+        <View style={{flex: 1}}>
+          <HomeScreen></HomeScreen>
+          <BottomScreen count={this.state.heartRate}></BottomScreen>
+        </View>
       );
     }
     else if (this.state.calibrating && !this.state.panic) {
       return (
-        <CalibrateScreen count={globalTime - this.state.count}></CalibrateScreen>
+        <CalibrateScreen count={this.state.count} startTime={startTime} endTime={globalTime}></CalibrateScreen>
       )
     } else if (this.state.panic) {
       return (
+        <View style={{flex: 1}}>
         <PanicScreen></PanicScreen>
+        <BottomScreen count={this.state.heartRate}></BottomScreen>
+        </View>
       )
     }
   }

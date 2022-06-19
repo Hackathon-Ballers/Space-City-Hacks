@@ -13,7 +13,7 @@ export default function PanicScreen(){
 const styles = StyleSheet.create({
     container: { 
         backgroundColor: 'red', 
-        height: 500, 
+        flex:10,
         alignItems: 'center', 
         justifyContent: 'center' 
     }

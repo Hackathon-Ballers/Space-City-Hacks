@@ -2,18 +2,20 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Component } from 'react'
 
-export default function HomeScreen(){
+export default function BottomScreen(props){
     return (
+        <>
+        <View style={{flex: 1, backgroundColor:'red'}}></View>
         <View style={styles.container}>
-          <Text>You are okay :)</Text>
-          <StatusBar style="auto" />
+          <Text>Heart Rate: {props.count}</Text>
         </View>
+        </>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-      flex: 10,
+      flex: 9,
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',

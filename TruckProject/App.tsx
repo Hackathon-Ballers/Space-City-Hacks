@@ -1,7 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Component } from 'react'
+
+//import Sound from 'react-native-sound';
+import CalibrateScreen from './screens/CalibrateScreen';
+import HomeScreen from './screens/HomeScreen';
+import PanicScreen from './screens/PanicScreen';
+import BottomScreen from './screens/BottomScren';
+
 import { Audio } from 'expo-av';
+
 
 var globalTime = 10;
 var startTime = 0;
@@ -23,22 +31,21 @@ class App extends Component {
   render() {
     if (this.state.calibrating === false && !this.state.panic) {
       return (
-        <View style={styles.container}>
-          <Text>{this.state.heartRate}</Text>
-          <StatusBar style="auto" />
+        <View style={{flex: 1}}>
+          <HomeScreen></HomeScreen>
+          <BottomScreen count={this.state.heartRate}></BottomScreen>
         </View>
       );
     }
     else if (this.state.calibrating && !this.state.panic) {
       return (
-        <View style={styles.container}>
-          <Text>Calibrating {globalTime - this.state.count}</Text>
-        </View>
+        <CalibrateScreen count={this.state.count} startTime={startTime} endTime={globalTime}></CalibrateScreen>
       )
     } else if (this.state.panic) {
       return (
-        <View style={{ backgroundColor: 'red', height: 820, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>PANIC PANIC</Text>
+        <View style={{flex: 1}}>
+        <PanicScreen></PanicScreen>
+        <BottomScreen count={this.state.heartRate}></BottomScreen>
         </View>
       )
     }
